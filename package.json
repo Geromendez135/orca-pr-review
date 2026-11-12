@@ -1,0 +1,7 @@
+{
+  "name": "pr-review",
+  "private": true,
+  "type": "module",
+  "scripts": { "typecheck": "tsc -p . --noEmit" },
+  "devDependencies": { "@types/node": "22.10.2", "typescript": "5.6.3" }
+}

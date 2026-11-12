@@ -1,0 +1,69 @@
+{
+  "manifestVersion": 2,
+  "id": "pr-review",
+  "name": "PR Review",
+  "version": "0.4.0",
+  "description": "Review a branch's PR changes in a file tree: mark files and single changes as viewed, see whole files, search with Cmd+F, and send line comments to your agent.",
+  "author": {
+    "name": "Geromendez135",
+    "url": "https://github.com/Geromendez135"
+  },
+  "repository": "https://github.com/Geromendez135/orca-pr-review",
+  "license": "MIT",
+  "engines": {
+    "orca": ">=1.4.248"
+  },
+  "execution": "trusted-worker",
+  "pluginApi": 1,
+  "main": "src/worker.ts",
+  "contributes": {
+    "panels": [
+      {
+        "id": "review",
+        "title": "PR Review",
+        "icon": "branch",
+        "entry": "ui/panel.html",
+        "ui": "html"
+      }
+    ],
+    "customEditors": [
+      {
+        "id": "review-tab",
+        "title": "PR Review",
+        "extensions": [
+          ".prreview"
+        ],
+        "entry": "ui/editor.html",
+        "priority": "default",
+        "frame": "isolated"
+      }
+    ],
+    "settings": [
+      {
+        "key": "baseBranch",
+        "title": "Base branch",
+        "description": "Branch to compare against. Empty uses the PR's base branch, then origin/HEAD.",
+        "type": "string",
+        "default": "",
+        "placeholder": "main"
+      }
+    ]
+  },
+  "capabilities": [
+    {
+      "kind": "workspace:read"
+    },
+    {
+      "kind": "workspace:write"
+    },
+    {
+      "kind": "storage:own"
+    },
+    {
+      "kind": "settings:own"
+    },
+    {
+      "kind": "notifications:show"
+    }
+  ]
+}
